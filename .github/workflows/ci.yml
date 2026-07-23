@@ -29,3 +29,10 @@ jobs:
 
       - name: Build and Test
         run: mvn clean verify
+
+      - name: SonarQube Scan
+        run: |
+          mvn sonar:sonar \
+            -Dsonar.projectKey=springboot-devsecops \
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
